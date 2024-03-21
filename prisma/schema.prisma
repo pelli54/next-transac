@@ -1,0 +1,130 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
+// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id        Int         @id @default(autoincrement())
+  username  String      @unique
+  email     String      @unique
+  password  String
+  producer Producer?
+  petitionIssued Petition[] @relation(name: "petitionIssued")
+  petitionReceived Petition[] @relation(name: "petitionReceived")
+  createdAt          DateTime  @default(now())
+  updatedAt          DateTime  @updatedAt
+}
+
+model Producer {
+  id        Int         @id @default(autoincrement())
+  user User @relation(fields: [userId], references: [id])
+  userId Int @unique
+  companyId Int
+  company Company @relation(fields: [companyId], references: [id])
+  role String
+  balance Float?
+  name String
+  active Boolean @default(true)
+  transacIssued Transaction[] @relation(name: "transacIssued")
+  transacReceived Transaction[] @relation(name: "transacReceived")
+  cut Cut[]
+  lastCutDate DateTime?
+  createdAt          DateTime  @default(now())
+  updatedAt          DateTime  @updatedAt
+}
+
+model Company {
+  id        Int         @id @default(autoincrement())
+  name String @unique
+  adminId Int?
+  producers Producer[]
+  transacCount Int @default(0)
+  cutCount Int @default(0)
+  currencies Currency[]
+  trasaction Transaction[]
+  petition Petition[]
+  cut Cut[]
+  lastCutDate DateTime?
+  createdAt          DateTime  @default(now())
+  updatedAt          DateTime  @updatedAt
+}
+
+model Currency {
+  id        Int         @id @default(autoincrement())
+  name String
+  main Boolean
+  factor Float
+  companyId Int 
+  company Company @relation(fields: [companyId], references: [id])
+  createdAt          DateTime  @default(now())
+  updatedAt          DateTime  @updatedAt
+}
+
+model Transaction {
+  id        Int         @id @default(autoincrement())
+  transmitter Producer @relation(name: "transacIssued", fields: [transmitterId], references: [id])
+  receiver Producer @relation(name: "transacReceived", fields: [receiverId], references: [id])
+  transmitterId Int
+  receiverId Int
+  company Company @relation(fields: [companyId], references: [id])
+  companyId Int
+  currencyName String
+  currencyFactor Float
+  quantity Float
+  status String
+  income Boolean @default(false)
+  cut TransactionOnCuts[]
+  createdAt          DateTime  @default(now())
+  updatedAt          DateTime  @updatedAt
+}
+
+model Cut {
+  id        Int         @id @default(autoincrement())
+  code String
+  startDate DateTime
+  endDate DateTime
+  company Company @relation(fields: [companyId], references: [id])
+  companyId Int
+  balance Float
+  transactions TransactionOnCuts[]
+  producerId Int
+  producer Producer @relation(fields: [producerId], references: [id])
+  createdAt          DateTime  @default(now())
+  updatedAt          DateTime  @updatedAt
+}
+
+model TransactionOnCuts {
+  transaction Transaction @relation(fields: [transactionId], references: [id])
+  transactionId Int
+  cut Cut @relation(fields: [cutId], references: [id])
+  cutId Int
+  createdAt          DateTime  @default(now())
+  updatedAt          DateTime  @updatedAt
+
+  @@id([transactionId, cutId])
+}
+
+model Petition {
+  id        Int         @id @default(autoincrement())
+  companyId Int
+  company Company @relation(fields: [companyId], references: [id])
+  type String 
+  transmitter User @relation(name: "petitionIssued", fields: [transmitterId], references: [id])
+  transmitterId Int
+  receiver  User @relation(name: "petitionReceived",fields: [receiverId], references: [id])
+  receiverId Int
+  status String
+  description String? 
+  createdAt          DateTime  @default(now())
+  updatedAt          DateTime  @updatedAt
+}
