@@ -101,6 +101,13 @@ export const Content = () => {
     return <Loading />;
   }
   if (toCreateData) {
+    if(toCreateData.producer.length===0){
+      return <div>
+        <h1 className="text-lg mb-1 font-semibold">You dont have another Producer yet</h1>
+        <p>To create a new producer must create a nuw User, Log in with the new User, and send a Petition to the company do you want join. The User Admin will receive a petition from the nuw User and this must be Accepted.</p>
+      </div>
+    }
+    console.log(toCreateData)
     form.setValue("income", isIncome);
     form.setValue("transmitterId", toCreateData.myProducer.id);
     form.setValue("companyId", toCreateData.myProducer.companyId);
