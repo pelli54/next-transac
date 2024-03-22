@@ -100,7 +100,7 @@ const page = ({ params }: { params: { id: string } }) => {
               <TableRow>
                 <TableCell>{transac.id}</TableCell>
                 <TableCell>{transac.transmitter.name}</TableCell>
-                <TableCell>{transac.reciever.name}</TableCell>
+                <TableCell>{transac.receiver.name}</TableCell>
                 <TableCell>{moment(transac.updatedAt).format('LLL')}</TableCell>
                 <TableCell>{transac.income?'Credit':'Debit'}</TableCell>
                 <TableCell>{transac.currencyName}</TableCell>

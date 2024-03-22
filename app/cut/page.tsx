@@ -1,12 +1,11 @@
 "use client";
 import ContainerCentered from "@/components/ContainerCentered";
 import { useCut } from "@/hooks";
-import React, { useReducer } from "react";
+import React from "react";
 import { APIGetCutResponse } from "../api/admin/cut/route";
 import Loading from "@/components/Loading";
 import { AxiosError } from "axios";
 import { useRouter } from "next/navigation";
-import { Card } from "@/components/ui/card";
 import {
   Table,
   TableBody,
@@ -45,7 +44,7 @@ const page = () => {
           </TableHeader>
           <TableBody>
             {cuts.map((cut) => (
-              <TableRow className="border-b p-3" key={cut.id}>
+              <TableRow className="border-b p-3" key={cut.id} onClick={() => router.push('/cut/'+cut.id)}>
                 <TableCell className="font-bold">#{cut.code}</TableCell>
                 <TableCell className="">{cut.producer.name}</TableCell>
                 <TableCell className="">{moment(cut.startDate).format('LLL')}</TableCell>

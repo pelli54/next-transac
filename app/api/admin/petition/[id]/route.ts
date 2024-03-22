@@ -19,7 +19,7 @@ export async function DELETE(req: NextRequest, {params}: {params:{id:string}}){
         id: Number(id)
       },
       data:{
-        status:'DENY'
+        status:'DENY' 
       }
     })
     if(!petitionUpdated){
