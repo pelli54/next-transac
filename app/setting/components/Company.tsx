@@ -7,7 +7,7 @@ import { zodResolver } from '@hookform/resolvers/zod'
 import axios, { AxiosError } from 'axios'
 import React from 'react'
 import { useForm } from 'react-hook-form'
-import type { Company } from "@prisma/client";
+import type { Company } from "@/prisma/generated/client";
 import { toast } from 'sonner'
 import { Button } from '@/components/ui/button'
 import { useStore } from '@/store/store'

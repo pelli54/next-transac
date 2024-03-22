@@ -1,4 +1,4 @@
-import { PrismaClient, type Producer } from "@prisma/client";
+import { PrismaClient, type Producer } from "@/prisma/generated/client";
 import { getServerSession } from "next-auth";
 
 const prisma = new PrismaClient()

@@ -1,5 +1,5 @@
 import { NextRequest, NextResponse } from "next/server";
-import type { Currency } from "@prisma/client";
+import type { Currency } from "@/prisma/generated/client";
 import { currencySchema } from "@/schema/schemas";
 import { CurrencySchemaType } from "@/types/Types";
 import { validationUserAPI } from "@/lib/userValition";

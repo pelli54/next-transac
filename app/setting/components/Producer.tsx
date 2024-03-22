@@ -26,7 +26,7 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { Plus, UserRoundCog } from "lucide-react";
 import React, { useState } from "react";
 import { useForm } from "react-hook-form";
-import type { Producer } from "@prisma/client";
+import type { Producer } from "@/prisma/generated/client";
 import axios, { AxiosError } from "axios";
 import { toast } from "sonner";
 import { useStore } from "@/store/store";

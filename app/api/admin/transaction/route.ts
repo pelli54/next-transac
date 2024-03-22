@@ -1,10 +1,11 @@
 import { transactionSchema } from "@/schema/schemas";
 import { TransactionSchemaType } from "@/types/Types";
 import { NextRequest, NextResponse } from "next/server";
-import type { Transaction } from "@prisma/client";
+import type { Transaction } from "@/prisma/generated/client";
 import { validationUserAPI } from "@/lib/userValition";
 import { getPusherInstance } from "@/pusher/server";
 import prisma from '@/db/client'
+
 
 const pusher = getPusherInstance()
 

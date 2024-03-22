@@ -1,6 +1,6 @@
 import { petitionToClient } from "@/app/api/admin/petition/tojoin/route";
 import { useCompanyAll, usePetitionClient } from "@/hooks";
-import { Company } from "@prisma/client";
+import { Company } from "@/prisma/generated/client";
 import axios, { AxiosError } from "axios";
 import { useSession } from "next-auth/react";
 import { useRouter } from "next/navigation";

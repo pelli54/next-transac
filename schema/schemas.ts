@@ -1,6 +1,4 @@
 import { z } from "zod" 
-import type { Producer, Petition } from "@prisma/client";
-
 
 export const registerSchema = z
   .object({

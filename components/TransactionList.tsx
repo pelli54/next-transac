@@ -15,7 +15,7 @@ import { Label } from "./ui/label";
 import { Switch } from "./ui/switch";
 import { useStore } from "@/store/store";
 import { pusherClient } from "@/pusher/client";
-import { Producer, Transaction } from "@prisma/client";
+import { Producer, Transaction } from "@/prisma/generated/client";
 
 type TransactionExtend = Transaction & {
   receiver: Producer;

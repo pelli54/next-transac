@@ -19,7 +19,6 @@ import {
 import { signOut, useSession } from "next-auth/react";
 import { useRouter } from "next/navigation";
 import useSWR from "swr";
-import type { Producer, Company } from "@prisma/client";
 import Petition from "@/components/Petition";
 import { ContentLauch } from "@/components/ContentLaunch";
 import TransactionDialog from "@/components/CreateTransactionDialog/TransactionDialog";
@@ -27,6 +26,7 @@ import TransactionSended from "@/components/TransactionSended";
 import TransactionList from "@/components/TransactionList";
 import ToCutDialog from "@/components/ToCutDialog/ToCutDialog";
 import { pusherClient } from "@/pusher/client";
+import { Company, Producer } from "@/prisma/generated/client";
 
 export default function Home() {
   const { status, data } = useSession();

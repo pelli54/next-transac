@@ -1,6 +1,6 @@
 import { validationUserAPI } from "@/lib/userValition";
 import { genCode } from "@/lib/utils";
-import { Cut, Producer, Transaction } from "@prisma/client";
+import { Cut, Producer, Transaction } from "@/prisma/generated/client";
 import { NextRequest, NextResponse } from "next/server";
 import prisma from '@/db/client'
 

@@ -1,6 +1,6 @@
 import { validationUserAPI } from "@/lib/userValition";
 import { NextRequest, NextResponse } from "next/server";
-import type {Cut, Producer} from '@prisma/client'
+import type {Cut, Producer} from '@/prisma/generated/client'
 import { genCode } from "@/lib/utils";
 import prisma from '@/db/client'
 

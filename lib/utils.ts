@@ -1,4 +1,4 @@
-import { Transaction } from "@prisma/client";
+import { Transaction } from "@/prisma/generated/client";
 import axios from "axios";
 import { type ClassValue, clsx } from "clsx";
 import { twMerge } from "tailwind-merge";

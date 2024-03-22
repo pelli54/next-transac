@@ -1,5 +1,5 @@
 import { validationUserAPI } from "@/lib/userValition";
-import { Currency, Producer } from "@prisma/client";
+import { Currency, Producer } from "@/prisma/generated/client";
 import { NextRequest, NextResponse } from "next/server";
 import prisma from '@/db/client'
 

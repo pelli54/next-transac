@@ -1,5 +1,5 @@
 import { NextRequest, NextResponse } from "next/server";
-import type { Company, Producer } from "@prisma/client";
+import type { Company, Producer } from "@/prisma/generated/client";
 import { ProducerSchemaType } from "@/types/Types";
 import { producerSchema } from "@/schema/schemas";
 import { validationUserAPI } from "@/lib/userValition";

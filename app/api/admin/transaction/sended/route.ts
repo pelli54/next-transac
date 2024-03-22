@@ -1,7 +1,5 @@
 import { validationUserAPI } from "@/lib/userValition";
-import { transactionIsCredit } from "@/lib/utils";
 import { Producer, Transaction } from "@/prisma/generated/client";
-import { PrismaClient } from "@prisma/client";
 import { NextRequest, NextResponse } from "next/server";
 import prisma from '@/db/client'
 

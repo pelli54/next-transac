@@ -8,7 +8,7 @@ import { zodResolver } from '@hookform/resolvers/zod'
 import { Home, Plus } from 'lucide-react'
 import React, { useState } from 'react'
 import { useForm } from 'react-hook-form'
-import type { Currency } from "@prisma/client";
+import type { Currency } from "@/prisma/generated/client";
 import { useCurrency } from '@/hooks'
 import Loading from '@/components/Loading'
 import { Button } from '@/components/ui/button'

@@ -12,7 +12,7 @@ import {
 import { Button } from "./ui/button";
 import ProducerDialog, { ProducerData } from "./ProducerDialog";
 import { usePetition } from "@/hooks";
-import type { Petition, Company, User } from "@prisma/client";
+import type { Petition, Company, User } from "@/prisma/generated/client";
 import axios, { AxiosError } from "axios";
 import { toast } from "sonner";
 import { useStore } from "@/store/store";

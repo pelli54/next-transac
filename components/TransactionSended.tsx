@@ -3,7 +3,6 @@ import React from "react";
 import { Button } from "./ui/button";
 import { useTransactionsSended } from "@/hooks";
 import Loading from "./Loading";
-import { Producer, Transaction } from "@prisma/client";
 import { Card } from "./ui/card";
 import { cn } from "@/lib/utils";
 import axios, { AxiosError } from "axios";
