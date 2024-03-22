@@ -1,22 +1,22 @@
 import { validationUserAPI } from "@/lib/userValition";
-import { Currency, Producer, Transaction } from "@prisma/client";
+import { transactionIsCredit } from "@/lib/utils";
+import { Producer, Transaction } from "@/prisma/generated/client";
+import { PrismaClient } from "@prisma/client";
 import { NextRequest, NextResponse } from "next/server";
+import prisma from '@/db/client'
 
 export type APIGETTransactionSendedResponse = {
-  transactions:Array<Transaction & {
-    transmitter: Producer;
-    receiver: Producer;
-  }>
-  companyId:number
-}
+  transactions: Array<
+    Transaction & {
+      transmitter: Producer;
+      receiver: Producer;
+    }
+  >;
+  companyId: number;
+};
 
 
 export async function GET(req: NextRequest) {
-  if(!prisma){
-    return NextResponse.json(
-      { message: "DB error" },{ status: 500 }
-    );
-  }
   try {
     const {
       error: userError,
@@ -36,7 +36,7 @@ export async function GET(req: NextRequest) {
         { status: 403 }
       );
     }
-    const transactionSended = await prisma.transaction.findMany({
+    const transactionSended = await prisma?.transaction.findMany({
       where: {
         companyId: producer?.companyId,
         receiverId: producer?.id,
@@ -46,17 +46,21 @@ export async function GET(req: NextRequest) {
         receiver: true,
         transmitter: true,
       },
-      orderBy:{
-        createdAt:'desc'
-      }
+      orderBy: {
+        createdAt: "desc",
+      },
     });
+    if (!transactionSended) {
+      return NextResponse.json({ message: "db error" }, { status: 500 });
+    }
 
     const response: APIGETTransactionSendedResponse = {
       transactions: transactionSended,
-      companyId:producer?.companyId as number
-    }
+      companyId: producer?.companyId as number,
+    };
     return NextResponse.json(response);
   } catch (error) {
+    console.log(error);
     return NextResponse.json({ message: "server error" }, { status: 500 });
   }
 }

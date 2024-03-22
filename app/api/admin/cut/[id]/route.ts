@@ -2,6 +2,7 @@ import { validationUserAPI } from "@/lib/userValition";
 import { genCode } from "@/lib/utils";
 import { Cut, Producer, Transaction } from "@prisma/client";
 import { NextRequest, NextResponse } from "next/server";
+import prisma from '@/db/client'
 
 export type APIGETCutIdResponse = {
   cut: Cut & { producer: Producer };

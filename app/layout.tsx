@@ -6,6 +6,7 @@ import { ThemeProvider } from "@/components/theme-provider";
 import SessionWrapper from '@/components/SessionWrapper'
 import { Toaster } from "@/components/ui/sonner";
 
+export const dynamic = "force-dynamic"
 
 const fontSans = FontSans({
   subsets: ["latin"],

@@ -2,6 +2,8 @@ import { validationUserAPI } from "@/lib/userValition";
 import { petitionSchema } from "@/schema/schemas";
 import { PetitionSchemaType } from "@/types/Types";
 import { NextRequest, NextResponse } from "next/server";
+import prisma from '@/db/client'
+
 
 export async function GET(req: NextRequest) {
   try {

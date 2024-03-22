@@ -4,6 +4,7 @@ import prisma from '@/db/client'
 import bcrypt from 'bcrypt'
 import { registerSchema } from '@/schema/schemas'
 
+
 type RegisterParamsAPI = z.infer<typeof registerSchema>
 
 export async function POST(req: NextRequest) {

@@ -1,5 +1,8 @@
-import type { Producer } from "@prisma/client";
+import { PrismaClient, type Producer } from "@prisma/client";
 import { getServerSession } from "next-auth";
+
+const prisma = new PrismaClient()
+
 
 export type validateUserErrorType = "NOTUSERFOUND" | "NOTPRODUCERFOUND" | "NOTSESSION" | 'SERVER';
 interface validationUserError {
@@ -28,9 +31,8 @@ export async function validationUserAPI(): Promise<validationUserResult> {
     producer: null,
     user: null,
   };
+  const session = await getServerSession();
   try {
-    const session = await getServerSession();
-    session?.user;
     if (!session) {
       result.error = {
         message: "unauthorized",
@@ -79,7 +81,7 @@ export async function validationUserAPI(): Promise<validationUserResult> {
   } catch (error) {
     result.error = {
       type: 'SERVER',
-      message:'server error',
+      message:'server error vu',
       status:500
     }
     return {...result}

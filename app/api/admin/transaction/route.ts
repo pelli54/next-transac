@@ -4,6 +4,7 @@ import { NextRequest, NextResponse } from "next/server";
 import type { Transaction } from "@prisma/client";
 import { validationUserAPI } from "@/lib/userValition";
 import { getPusherInstance } from "@/pusher/server";
+import prisma from '@/db/client'
 
 const pusher = getPusherInstance()
 

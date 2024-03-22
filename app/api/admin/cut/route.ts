@@ -2,6 +2,7 @@ import { validationUserAPI } from "@/lib/userValition";
 import { NextRequest, NextResponse } from "next/server";
 import type {Cut, Producer} from '@prisma/client'
 import { genCode } from "@/lib/utils";
+import prisma from '@/db/client'
 
 export type APIGetCutResponse = Array<Cut & {producer: Producer}>
 export async function GET(req: NextRequest){

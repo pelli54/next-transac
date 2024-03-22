@@ -3,6 +3,7 @@ import type { Company, Producer } from "@prisma/client";
 import { ProducerSchemaType } from "@/types/Types";
 import { producerSchema } from "@/schema/schemas";
 import { validationUserAPI } from "@/lib/userValition";
+import prisma from '@/db/client'
 
 export type APIGetProducerResponse = Array<Producer & {company: Company}>
 export async function GET(req: NextRequest) {

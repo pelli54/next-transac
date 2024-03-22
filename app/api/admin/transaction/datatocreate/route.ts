@@ -1,6 +1,7 @@
 import { validationUserAPI } from "@/lib/userValition";
 import { Currency, Producer } from "@prisma/client";
 import { NextRequest, NextResponse } from "next/server";
+import prisma from '@/db/client'
 
 export interface DatatoCreateTransaction {
   currency: Currency[];

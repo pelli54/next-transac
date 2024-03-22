@@ -3,6 +3,8 @@ import type { Currency } from "@prisma/client";
 import { currencySchema } from "@/schema/schemas";
 import { CurrencySchemaType } from "@/types/Types";
 import { validationUserAPI } from "@/lib/userValition";
+import prisma from '@/db/client'
+
 
 
 export async function GET(req: NextRequest) {

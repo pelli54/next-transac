@@ -2,6 +2,7 @@ import { validationUserAPI } from "@/lib/userValition";
 import { initializeProducerCompany } from "@/schema/schemas";
 import { InitializeSchemaType } from "@/types/Types";
 import { NextRequest, NextResponse } from "next/server";
+import prisma from '@/db/client'
 
 export async function POST(req: NextRequest) {
   try {

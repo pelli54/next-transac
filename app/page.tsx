@@ -150,9 +150,9 @@ export default function Home() {
                 <User />
                 {producerData.name}
               </div>
-              <Button variant={"ghost"} className="px-1 py-0 flex items-center">
+              <Button variant={"ghost"} className="px-1 py-0 flex items-center" onClick={() => router.push('/cut')}>
                 <BarChart2 className="mr-1" />
-                <span className="">Movimientos en linea</span>
+                <span className="">Previous Movements</span>
                 <ChevronRight className="ml-2 text-sm" />
               </Button>
             </div>

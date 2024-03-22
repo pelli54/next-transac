@@ -1,6 +1,7 @@
 import { validationUserAPI } from "@/lib/userValition";
 import { getPusherInstance } from "@/pusher/server";
 import { NextRequest, NextResponse } from "next/server";
+import prisma from '@/db/client'
 
 const pusher = getPusherInstance()
 

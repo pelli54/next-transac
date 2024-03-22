@@ -3,6 +3,8 @@ import type { Company } from "@prisma/client";
 import { CompanySchemaType } from "@/types/Types";
 import { companySchema } from "@/schema/schemas";
 import { validationUserAPI } from "@/lib/userValition";
+import prisma from '@/db/client'
+
 
 export async function GET(req: NextRequest) {
   try {
@@ -14,7 +16,7 @@ export async function GET(req: NextRequest) {
       );
     }
 
-    const company = await prisma?.company.findFirst({
+    const company = await prisma.company.findFirst({
       where: { id: producer?.companyId },
     });
     if (!company) {
@@ -48,7 +50,7 @@ export async function POST(req: NextRequest) {
       );
     }
 
-    const companyCreated = await prisma?.company.create({
+    const companyCreated = await prisma.company.create({
       data: {
         adminId: producer?.id,
         name: data.name,

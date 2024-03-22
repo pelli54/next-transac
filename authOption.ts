@@ -1,9 +1,8 @@
 import CredentialsProvider from 'next-auth/providers/credentials'
 import bcrypt from 'bcrypt'
-import prisma from '@/db/client'
 import { PrismaAdapter } from "@next-auth/prisma-adapter";
 import { NextAuthOptions, Session } from 'next-auth';
-
+import prisma from '@/db/client'
 
 export const authOption: NextAuthOptions = {
     providers: [
@@ -18,7 +17,7 @@ export const authOption: NextAuthOptions = {
                 },
             },
             async authorize(credentials, req) {
-                const userFound = await prisma?.user.findUnique({
+                const userFound = await prisma.user.findUnique({
                     where: {
                         email: credentials?.email,
                     },
@@ -44,6 +43,7 @@ export const authOption: NextAuthOptions = {
     pages: {
         signIn: '/signin',
     },
+    //@ts-ignore
     adapter: PrismaAdapter(prisma),
     session: {
         strategy: 'jwt',
@@ -53,7 +53,7 @@ export const authOption: NextAuthOptions = {
     callbacks:{
         async session({session}:{session: Session}) {
             if(session.user?.email){
-                const userDB = await prisma.user.findUnique({where:{email: session.user?.email}})
+                const userDB = await prisma?.user.findUnique({where:{email: session.user?.email}})
                 if(userDB){
                     session.user.id = userDB.id
                     session.user.email = userDB.email

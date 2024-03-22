@@ -1,5 +1,7 @@
 import { getServerSession } from "next-auth";
 import { NextRequest, NextResponse } from "next/server"
+import prisma from '@/db/client'
+
 
 export async function GET(req: NextRequest, {params}: {params:{id:string}}){
   try {
