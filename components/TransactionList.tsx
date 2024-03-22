@@ -18,7 +18,7 @@ import { pusherClient } from "@/pusher/client";
 import { Producer, Transaction } from "@prisma/client";
 
 type TransactionExtend = Transaction & {
-  reciever: Producer;
+  receiver: Producer;
   transmitter: Producer;
 };
 interface GetTransactionFromAPI {
