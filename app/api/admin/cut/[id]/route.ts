@@ -7,7 +7,7 @@ export type APIGETCutIdResponse = {
   cut: Cut & { producer: Producer };
   transactions: Array<
     Transaction & {
-      reciever:Producer,
+      receiver:Producer,
       transmitter:Producer
     }
   >
